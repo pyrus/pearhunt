@@ -3,7 +3,7 @@
 if (file_exists(dirname(__FILE__).'/../config.inc.php')) {
     require_once dirname(__FILE__).'/../config.inc.php';
 } else {
-    require dirname(__FILE__).'/../config.sample.php';
+    require_once dirname(__FILE__).'/../config.sample.php';
 }
 
 if (!isset($_SERVER['argv'], $_SERVER['argv'][1])
@@ -16,7 +16,7 @@ if (!isset($_SERVER['argv'], $_SERVER['argv'][1])
 
 if ($channel = Channel::getByName($_SERVER['argv'][1])) {
     echo "That channel already exists!\n";
-    exit(1);
+    exit(0);
 }
 
 echo "Adding channel...\n";
@@ -36,5 +36,4 @@ include __DIR__ . '/updateChannel.php';
 
 exit(0);
 
-//@TODO Add script to add a newsroom
-// eg, php addNewsroom.php userid "Newsroom Title"
+

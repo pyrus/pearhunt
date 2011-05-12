@@ -3,7 +3,7 @@
 if (file_exists(dirname(__FILE__).'/../config.inc.php')) {
     require_once dirname(__FILE__).'/../config.inc.php';
 } else {
-    require dirname(__FILE__).'/../config.sample.php';
+    require_once dirname(__FILE__).'/../config.sample.php';
 }
 
 if (!isset($_SERVER['argv'], $_SERVER['argv'][1])
