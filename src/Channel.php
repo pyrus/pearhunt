@@ -5,6 +5,7 @@ class Channel extends Record
 	public $id;
 	public $name;
 	public $alias;
+	public $description;
 
     public function getTable()
     {
