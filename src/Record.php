@@ -26,12 +26,6 @@
  */
 class Record
 {
-	protected static $db_settings = array(
-        'host'     => 'localhost',
-        'user'     => 'pearhunt',
-        'password' => 'pearhunt',
-        'dbname'   => 'pearhunt'
-    );
 
     /**
      * Prepare the insert SQL for this record
@@ -330,20 +324,6 @@ class Record
         return $record;
     }
 
-    public static function setDbSettings($settings = array())
-    {
-        self::$db_settings = $settings + self::$db_settings;
-    }
-
-    public static function getDbSettings()
-    {
-        if (empty(self::$db_settings)) {
-            self::setDbSettings();
-        }
-
-        return self::$db_settings;
-    }
-
     /**
      * Connect to the database and return it
      *
@@ -353,7 +333,7 @@ class Record
     {
         static $db = false;
         if (!$db) {
-            $settings = self::getDbSettings();
+            $settings = Config::getDbSettings();
             $db = new mysqli($settings['host'], $settings['user'], $settings['password'], $settings['dbname']);
             if ($db->connect_error) {
                 die('Connect Error (' . $db->connect_errno . ') '
