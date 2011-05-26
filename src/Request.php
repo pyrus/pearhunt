@@ -17,6 +17,24 @@ class Request
 		return 'Channel';
 	}
 
+	function getRequestedModelId()
+	{
+		if (isset($this->id)) {
+			return $this->id;
+		}
+		return false;
+	}
+
+	function __isset($var)
+	{
+        if (isset($this->get[$var])
+            || isset($this->post[$var])) {
+            return true;
+        }
+
+        return false;
+	}
+
 	function __get($var)
 	{
 		if (isset($this->get[$var])) {
