@@ -19,6 +19,6 @@ class Controller
 		if ($id = $this->request->getRequestedModelId()) {
 			return $model_name::getById($id);
 		}
-		return new $model_name();
+		return new $model_name($this->request->getOptions());
 	}
 }

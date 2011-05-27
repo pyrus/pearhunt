@@ -1,8 +1,8 @@
 <?php
 class Request
 {
-	protected $get = array('format'=>'json');
-	protected $post = array();
+	protected $get   = array('format'=>'json');
+	protected $post  = array();
 	protected $files = array();
 
 	function __construct($get = array(), $post = array(), $files = array())
@@ -14,7 +14,7 @@ class Request
 
 	function getRequestedModel()
 	{
-		return 'Channel';
+		return 'PackageSearch';
 	}
 
 	function getRequestedModelId()
@@ -44,5 +44,10 @@ class Request
 			return $var;
 		}
 		throw new Exception('Unknown request option');
+	}
+
+	public function getOptions()
+	{
+		return $this->get;
 	}
 }
