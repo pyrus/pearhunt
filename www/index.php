@@ -14,7 +14,7 @@ $savvy->addTemplatePath(dirname(__FILE__).'/templates/html');
 
 switch ($request->format) {
 	case 'json':
-		header('Content-type:application/json');
+		//header('Content-type:application/json');
         $savvy->addTemplatePath(dirname(__FILE__).'/templates/'.$request->format);
 	    break;
     default:

@@ -1,2 +1,3 @@
 <?php
-echo json_encode($context->getModel());
+echo $savant->render($context->getModel());
+
