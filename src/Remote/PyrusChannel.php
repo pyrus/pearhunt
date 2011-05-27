@@ -30,4 +30,9 @@ class Remote_PyrusChannel implements Remote_ChannelInterface
     {
         return $this->channel->description;
     }
+
+    function getPackages()
+    {
+    	return new Remote_PyrusPackages();
+    }
 }
