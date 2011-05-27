@@ -22,12 +22,11 @@ if ($channel = Channel::getByName($_SERVER['argv'][1])) {
 
 echo "Adding channel...\n";
 
+$channel_file = new \PEAR2\Pyrus\ChannelFile($_SERVER['argv'][1], false, true);
 
-$pyrus_channel = new Remote_PyrusChannel($_SERVER['argv'][1]);
-
-$channel->name        = $pyrus_channel->getName();
-$channel->alias       = $pyrus_channel->getAlias();
-$channel->description = $pyrus_channel->getDescription();
+$channel->name        = $channel_file->name;
+$channel->alias       = $channel_file->alias;
+$channel->description = $channel_file->description;
 
 if (!$channel->save()) {
     echo 'Error creating the channel!'.PHP_EOL;

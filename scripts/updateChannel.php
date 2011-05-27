@@ -23,15 +23,20 @@ if (false === $channel) {
     exit(1);
 }
 
-$channel_file = new \PEAR2\Pyrus\ChannelFile($channel->name, false, true);
+if (!isset($channel_file)) {
+    $channel_file = new \PEAR2\Pyrus\ChannelFile($channel->name, false, true);
+}
+
 $pyrus_channel = new \PEAR2\Pyrus\Channel($channel_file);
-$config = \PEAR2\Pyrus\Config::current();
 
 // Ensure the channel currently exists in the registry
+$config = \PEAR2\Pyrus\Config::current();
 if (!$config->channelregistry->exists($pyrus_channel->name)) {
+	// Add it
     $config->channelregistry->add($pyrus_channel);
 }
 
+// Get the list of remote packages
 $packages = new \PEAR2\Pyrus\Channel\RemotePackages($config->channelregistry[$pyrus_channel->name]);
 
 
