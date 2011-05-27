@@ -12,17 +12,9 @@ class Channel extends Record
         return 'channels';
     }
 
-    public function getPackages()
+    public function getPackages($options = array())
     {
-    	$channel_file = new \PEAR2\Pyrus\ChannelFile($this->name, false, true);
-        $channel = new \PEAR2\Pyrus\Channel($channel_file);
-        $config = \PEAR2\Pyrus\Config::current();
-
-        // Ensure the channel currently exists in the registry
-        if (!$config->channelregistry->exists($channel->name)) {
-            $config->channelregistry->add($channel);
-        }
-    	return new Packages($config->channelregistry[$this->name]);
+    	return new Channel_Packages($this, $options);
     }
 
 }
