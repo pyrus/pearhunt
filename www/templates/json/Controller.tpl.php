@@ -1,3 +1,6 @@
-<?php
-echo $savant->render($context->getModel());
+{<?php
+$data = $savant->render($context->getModel());
+
+echo trim($data, ',');
+?>}
 
