@@ -21,15 +21,15 @@ Clone the repo!
 There's a Config class in `etc/` with the default configuration in it.
 Create a DB that can be connected using `mysqli://pearhunt:pearhunt@localhost/pearhunt`
 run `./scripts/upgrade.php` from cli to setup the DB
-run `php scripts/addChannel.php pear.php.net` to add a channel to the db
+run `./scripts/addChannel.php pear.php.net` to add a channel to the db
 
 === Indexing PEAR channels ===
 
 Add a channel and discover all packages:
-`php scripts/addChannel.php pear.example.com`
+`./scripts/addChannel.php pear.example.com`
 
 Update a channel:
-`php scripts/updateChannel.php pear.example.com`
+`./scripts/updateChannel.php pear.example.com`
 
 === Searching! ===
 
