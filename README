@@ -20,7 +20,7 @@ Clone the repo!
 
 There's a Config class in `etc/` with the default configuration in it.
 Create a DB that can be connected using `mysqli://pearhunt:pearhunt@localhost/pearhunt`
-run `php upgrade.php` from cli to setup the DB
+run `./scripts/upgrade.php` from cli to setup the DB
 run `php scripts/addChannel.php pear.php.net` to add a channel to the db
 
 === Indexing PEAR channels ===
