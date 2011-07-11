@@ -158,9 +158,11 @@ class Record
     protected function prepareAndExecute($sql, $values)
     {
         $mysqli = self::getDB();
-
         if (!$stmt = $mysqli->prepare($sql)) {
-            throw new Exception('Error preparing database statement! '.$mysqli->error, 500);
+            throw new RuntimeException(
+                "Error preparing database statement! ($sql): $mysqli->error",
+                500
+            );
         }
 
         call_user_func_array(array($stmt, 'bind_param'), $values);
