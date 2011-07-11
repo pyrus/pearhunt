@@ -1,5 +1,18 @@
 
-I hacked this together at php|tek a month or two ago... there's no admin interface, only CLI scripts to add channels and update channels. I just used what I knew... so it's a mysql db using the mysqi ext and a stupid active record implementation.
+PEAR channel *information* aggregator
+
+This DOES NOT AGGREGATE PACKGES! It only aggregates information about packages.
+
+At php|tek, I was chatting with MWOP, Ed, and Helgi about adding a `search` command to pyrus. This command
+would search some service that aggregates PEAR package information, and would make it easier for people to 
+discover PEAR channels and packages.
+
+
+I hacked this together at php|tek, and this is my response to that discussion.  
+
+There's no admin interface, only CLI scripts to add channels and update channels.
+
+I just used what I knew... so it's a mysql db using the mysqi ext and a stupid active record implementation.
 
 === Setup! ===
 
@@ -15,7 +28,6 @@ run `php scripts/addChannel.php pear.php.net` to add a channel to the db
 Add a channel and discover all packages:
 `php scripts/addChannel.php pear.example.com`
 
-
 Update a channel:
 `php scripts/updateChannel.php pear.example.com`
 
@@ -23,4 +35,10 @@ Update a channel:
 
 Right now there's only a json output:
 http://ucommbieber.unl.edu/workspace/pearhunt/www/?q=load
+
+
+=== TODO ===
+When scanning the channels, also scan the packages and index all the classes each package provides...
+this would allow us to build a really dangerous autoloader that would install vendor dependencies 
+automatically   B-)
 
