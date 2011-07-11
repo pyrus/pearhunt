@@ -1,8 +1,8 @@
 <?php
-if (file_exists(dirname(__DIR__).'/etc/config.inc.php')) {
-    require_once dirname(__DIR__).'/etc/config.inc.php';
+if (file_exists(dirname(__DIR__) . '/etc/config.inc.php')) {
+    require_once dirname(__DIR__) . '/etc/config.inc.php';
 } else {
-    require_once dirname(__DIR__).'/etc/config.sample.php';
+    require_once dirname(__DIR__) . '/etc/config.sample.php';
 }
 
 $request = new Request($_GET, $_POST, $_FILES);
