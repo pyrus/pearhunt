@@ -23,7 +23,10 @@ class PackageSearch extends Packages
         $records = array();
         if ($result = $mysqli->query($sql)) {
             if ($result->num_rows > 0) {
-                $records = $result->fetch_all(MYSQL_ASSOC);
+                while($row = $result->fetch_assoc()) {
+                    $records[] = $row;
+                }
+                $result->free();
             }
         }
         parent::__construct(new ArrayIterator($records), $this->options['offset'], $this->options['limit']);
