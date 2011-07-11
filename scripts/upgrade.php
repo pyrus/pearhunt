@@ -1,9 +1,9 @@
 #!/usr/bin/env php
 <?php
-if (file_exists(__DIR__ . '/etc/config.inc.php')) {
-    require_once __DIR__ . '/etc/config.inc.php';
+if (file_exists(__DIR__ . '/../etc/config.inc.php')) {
+    require_once __DIR__ . '/../etc/config.inc.php';
 } else {
-    require __DIR__ . '/etc/config.sample.php';
+    require __DIR__ . '/../etc/config.sample.php';
 }
 
 // create the database (if necessary)
@@ -27,11 +27,11 @@ function exec_sql($db, $sql, $message, $fail_ok = false)
     $result = $db->multi_query($sql);
     if (!$result) {
         echo 'The query failed: ';
-        echo $mysqli->error;
+        echo $db->error;
         exit(1);
     }
     echo 'finished.<br />'.PHP_EOL;
 }
-exec_sql($db, file_get_contents(__DIR__ . '/data/pearhunt.sql'), 'Initializing database structure');
+exec_sql($db, file_get_contents(__DIR__ . '/../data/pearhunt.sql'), 'Initializing database structure');
 
 echo 'Upgrade complete!';
