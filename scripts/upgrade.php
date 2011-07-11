@@ -1,10 +1,6 @@
 #!/usr/bin/env php
 <?php
-if (file_exists(__DIR__ . '/../etc/config.inc.php')) {
-    require_once __DIR__ . '/../etc/config.inc.php';
-} else {
-    require __DIR__ . '/../etc/config.sample.php';
-}
+require_once __DIR__ . '/../bootstrap.php';
 
 // create the database (if necessary)
 Database::create();
