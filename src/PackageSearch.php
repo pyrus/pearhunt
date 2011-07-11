@@ -20,8 +20,11 @@ class PackageSearch extends Packages
             $sql .= '%"';
         }
 
+        $records = array();
         if ($result = $mysqli->query($sql)) {
-            $records = $result->fetch_all(MYSQL_ASSOC);
+            if ($result->num_rows > 0) {
+                $records = $result->fetch_all(MYSQL_ASSOC);
+            }
         }
         parent::__construct(new ArrayIterator($records), $this->options['offset'], $this->options['limit']);
     }
