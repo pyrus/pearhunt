@@ -327,19 +327,34 @@ class Record
     /**
      * Connect to the database and return it
      *
+     * @param boolean $useDb To use the db in the connection, or not.
+     *
      * @return mysqli
      */
-    public static function getDB()
+    public static function getDB($useDb = true)
     {
+        if (!is_bool($useDb)) {
+            throw InvalidArgumentException("Must be boolean.");
+        }
         static $db = false;
-        if (!$db) {
+        static $settings;
+
+        if ($settings === null) {
             $settings = Config::getDbSettings();
-            $db = new mysqli($settings['host'], $settings['user'], $settings['password'], $settings['dbname']);
+        }
+
+        if (!$db) {
+            if ($useDb === true) {
+                $db = new mysqli($settings['host'], $settings['user'], $settings['password'], $settings['dbname']);
+            } else {
+                $db = new mysqli($settings['host'], $settings['user'], $settings['password']);
+            }
             if ($db->connect_error) {
-                die('Connect Error (' . $db->connect_errno . ') '
-                        . $db->connect_error);
+                throw new RuntimeException('Connect Error (' . $db->connect_error . ')', $db->connect_errno);
             }
             $db->set_charset('utf8');
+        } else {
+            $db->select_db($settings['dbname']);
         }
         return $db;
     }
