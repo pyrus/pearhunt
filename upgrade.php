@@ -1,13 +1,17 @@
 <?php
-if (file_exists(__DIR__ . '/config.inc.php')) {
-    require_once __DIR__ . '/config.inc.php';
+if (file_exists(__DIR__ . '/etc/config.inc.php')) {
+    require_once __DIR__ . '/etc/config.inc.php';
 } else {
-    require __DIR__ . '/config.sample.php';
+    require __DIR__ . '/etc/config.sample.php';
 }
+
+// create the database (if necessary)
+Database::create();
 
 echo 'Connecting to the database&hellip;'.PHP_EOL;
 $db = Record::getDB();
 echo 'connected successfully!<br />'.PHP_EOL;
+
 /**
  * 
  * Enter description here ...
