@@ -14,7 +14,7 @@ PEAR2\Autoload::initialize('/Users/bbieber/workspace/PEAR2_Templates_Savant/src'
 
 spl_autoload_register("autoload");
 
-set_include_path(__DIR__ . '/src');
+set_include_path(__DIR__ . '/../src');
 
 
 $config = \PEAR2\Pyrus\Config::singleton('/tmp');
