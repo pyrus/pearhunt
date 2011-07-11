@@ -1,0 +1,26 @@
+
+I hacked this together at php|tek a month or two ago... there's no admin interface, only CLI scripts to add channels and update channels. I just used what I knew... so it's a mysql db using the mysqi ext and a stupid active record implementation.
+
+=== Setup! ===
+
+Clone the repo!
+
+There's a Config class with the default configuration in it.
+Create a DB that can be connected using `mysqli://pearhunt:pearhunt@localhost/pearhunt`
+run `php upgrade.php` from cli to setup the DB
+run `php scripts/addChannel.php pear.php.net` to add a channel to the db
+
+=== Indexing PEAR channels ===
+
+Add a channel and discover all packages:
+`php scripts/addChannel.php pear.example.com`
+
+
+Update a channel:
+`php scripts/updateChannel.php pear.example.com`
+
+=== Searching! ===
+
+Right now there's only a json output:
+http://ucommbieber.unl.edu/workspace/pearhunt/www/?q=load
+
