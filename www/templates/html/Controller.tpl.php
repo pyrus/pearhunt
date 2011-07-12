@@ -56,6 +56,9 @@ echo PHP_EOL;
                         }
                         $('#result').append('<li><span class="package">' + key + '</span>: <span class="code">pyrus install ' + channels[info.channel_id] + '/' + key + '</span></li>');
                     });
+                    if (0 == $('#result').children().length) {
+                    	$('#result').append('<li>No results found</li>');
+                    }
                 });
             });
         });
