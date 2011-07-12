@@ -11,7 +11,7 @@
     </head>
     <body>
         <h1>Search for a package</h1>
-        <form>
+        <form id="form">
             <input type="text" name="q" id="q" />
             <select name="channel" id="channel">
                 <option value="">all</option>
@@ -39,12 +39,15 @@ foreach ($channels as $channel) {
 echo PHP_EOL;
 ?>
         $(document).ready(function(){
+            $('#form').submit(function(){
+                $('#search').trigger('click');
+                return false;
+            });
             $('#search').click(function(){
                 $('#result li').remove();
                 $.get('?q=' + $('#q').val(), function(data){
                     var li = $('<li>');
                     $.each(data, function(key, info) {
-                        console.log(key);
                         if ($('#channel').val() != '') {
                             if ($('#channel').val() != info.channel_id) {
                                 return;
