@@ -2,8 +2,15 @@
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         <title>Package Search</title>
+        <style type="text/css">
+        body { font-family:arial;color:#000;margin:50px;}
+        .package { font-weight:bold;}
+        .code { font-family: Courier; font-size:10pt; }
+        #search { text-decoration:none; background:#ccc; color:#000; margin:#000; padding:4px; }
+        </style>
     </head>
     <body>
+        <h1>Search for a package</h1>
         <form>
             <input type="text" name="q" id="q" />
             <select name="channel" id="channel">
@@ -43,7 +50,7 @@ echo PHP_EOL;
                                 return;
                             }
                         }
-                        $('#result').append('<li>' + key + ': pear install ' + channels[info.channel_id] + '/key</li>');
+                        $('#result').append('<li><span class="package">' + key + '</span>: <span class="code">pear install ' + channels[info.channel_id] + '/key</span></li>');
                     });
                 });
             });
