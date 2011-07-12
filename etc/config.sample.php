@@ -2,7 +2,7 @@
 ini_set('display_errors', true);
 error_reporting(E_ALL);
 
-include 'phar:///Users/bbieber/Documents/workspace/PEAR2_Pyrus/pyrus.phar/PEAR2_Pyrus-2.0.0a3/php/PEAR2/Autoload.php';
+include 'phar://'.__DIR__.'/../vendor/PEAR2_Pyrus-2.0.0a3.phar/PEAR2_Pyrus-2.0.0a3/php/PEAR2/Autoload.php';
 
 function autoload($class)
 {
@@ -10,7 +10,7 @@ function autoload($class)
     include $class . '.php';
 }
 
-PEAR2\Autoload::initialize('/Users/bbieber/workspace/PEAR2_Templates_Savant/src');
+PEAR2\Autoload::initialize(__DIR__ . '/../vendor/php');
 
 spl_autoload_register("autoload");
 
