@@ -6,7 +6,7 @@
     <body>
         <form>
             <input type="text" name="q" id="q" />
-            <select name="channel">
+            <select name="channel" id="channel">
                 <option value="">all</option>
 <?php
 $channels = $context->getModel();
@@ -38,6 +38,11 @@ echo PHP_EOL;
                     var li = $('<li>');
                     $.each(data, function(key, info) {
                         console.log(key);
+                        if ($('#channel').val() != '') {
+                            if ($('#channel').val() != info.channel_id) {
+                                return;
+                            }
+                        }
                         $('#result').append('<li>' + key + ': pear install ' + channels[info.channel_id] + '/key</li>');
                     });
                 });
