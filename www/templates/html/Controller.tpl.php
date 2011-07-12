@@ -46,7 +46,6 @@ echo PHP_EOL;
             $('#search').click(function(){
                 $('#result li').remove();
                 $.get('?q=' + $('#q').val(), function(data){
-                    var li = $('<li>');
                     $.each(data, function(key, info) {
                         if ($('#channel').val() != '') {
                             if ($('#channel').val() != info.channel_id) {
