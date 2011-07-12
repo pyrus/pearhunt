@@ -36,27 +36,28 @@ If you want to use your own mysql credentials, copy `etc/config.sample.php` to `
 
 Finally:
 
-run `./scripts/upgrade.php` from cli to create and setup the DB
-run `./scripts/addChannel.php pear.php.net` to add a channel to the db.
+ * run `./scripts/upgrade.php` from cli to create and setup the DB
+ * run `./scripts/addChannel.php pear.php.net` to add a channel to the db.
 
 ## Indexing PEAR channels
 
 Add a channel and discover all packages:
-`./scripts/addChannel.php pear.example.com`
+
+ * `./scripts/addChannel.php pear.example.com`
 
 Update a channel:
-`./scripts/updateChannel.php pear.example.com`
+
+ * `./scripts/updateChannel.php pear.example.com`
 
 ## Searching!
 
-Right now there's only a json output:
+ * Search using the form which comes up from `www/index.php`
+ * It'll issue an ajax request to `www/index?q=foo`
 
-Search using the form which comes up from `www/index.php`
-
-It'll issue an ajax request to `www/index?q=foo`
-
+Content type is determined by the client's `Accept` header.
 
 ## TODO
+
 When scanning the channels, also scan the packages and index all the classes each package provides...
 this would allow us to build a really dangerous autoloader that would install vendor dependencies 
 automatically   B-)
