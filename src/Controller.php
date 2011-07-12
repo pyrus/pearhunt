@@ -8,7 +8,14 @@ class Controller
 	 */
 	public $request;
 
-	function __construct($request)
+    /**
+     * __construct
+     *
+     * @param Request $request
+     *
+     * @return $this
+     */
+	function __construct(Request $request)
 	{
 		$this->request = $request;
 	}
