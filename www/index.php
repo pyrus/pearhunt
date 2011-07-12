@@ -1,9 +1,5 @@
 <?php
-if (file_exists(dirname(__DIR__).'/config.inc.php')) {
-    require_once dirname(__DIR__).'/config.inc.php';
-} else {
-    require_once dirname(__DIR__).'/config.sample.php';
-}
+require_once __DIR__ . '/../bootstrap.php';
 
 $request = new Request($_GET, $_POST, $_FILES);
 

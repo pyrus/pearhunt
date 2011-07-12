@@ -18,18 +18,34 @@ I just used what I knew... so it's a mysql db using the mysqi ext and a stupid a
 
 Clone the repo!
 
-There's a Config class with the default configuration in it.
+There's a Config class in `etc/` with the default configuration in it.
+Just copy it to `config.inc.php` and adjust paths.
+
+You'll need a checkout of PEAR2_Pyrus as well: https://github.com/pyrus/Pyrus
+
 Create a DB that can be connected using `mysqli://pearhunt:pearhunt@localhost/pearhunt`
-run `php upgrade.php` from cli to setup the DB
-run `php scripts/addChannel.php pear.php.net` to add a channel to the db
+
+If you want to use your own mysql credentials, copy `etc/config.sample.php` to `config.inc.php` and add the following:
+
+Config:setDbSettings(array(
+    'host'     => 'example.org',
+    'username' => 'mysql user',
+    'password' => 'super secret password'
+    'dbname'   => 'my_database',
+));
+
+Finally:
+
+run `./scripts/upgrade.php` from cli to create and setup the DB
+run `./scripts/addChannel.php pear.php.net` to add a channel to the db.
 
 === Indexing PEAR channels ===
 
 Add a channel and discover all packages:
-`php scripts/addChannel.php pear.example.com`
+`./scripts/addChannel.php pear.example.com`
 
 Update a channel:
-`php scripts/updateChannel.php pear.example.com`
+`./scripts/updateChannel.php pear.example.com`
 
 === Searching! ===
 

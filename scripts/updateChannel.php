@@ -1,10 +1,6 @@
 #!/usr/bin/env php
 <?php
-if (file_exists(dirname(__FILE__).'/../config.inc.php')) {
-    require_once dirname(__FILE__).'/../config.inc.php';
-} else {
-    require_once dirname(__FILE__).'/../config.sample.php';
-}
+require_once __DIR__ . '/../bootstrap.php';
 
 if (!isset($_SERVER['argv'], $_SERVER['argv'][1])
     || $_SERVER['argv'][1] == '--help' || $_SERVER['argc'] != 2) {
