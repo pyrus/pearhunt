@@ -10,7 +10,7 @@ class PackageSearch extends Packages
         $records       = array();
         $mysqli        = Record::getDB();
 
-        $sql  = 'SELECT packages.* FROM packages';
+        $sql = 'SELECT packages.* FROM packages';
 
         if (isset($options['q']) && !empty($options['q'])) {
             $sql .= ' WHERE name LIKE "%';

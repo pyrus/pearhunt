@@ -25,11 +25,11 @@ $channel->alias       = $channel_file->alias;
 $channel->description = $channel_file->description;
 
 if (!$channel->save()) {
-    echo 'Error creating the channel!'.PHP_EOL;
+    echo 'Error creating the channel!' . PHP_EOL;
     exit(1);
 }
 
-echo "The channel {$channel->name} has been added!".PHP_EOL;
+echo "The channel {$channel->name} has been added!" . PHP_EOL;
 
 include __DIR__ . '/updateChannel.php';
 

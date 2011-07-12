@@ -1,5 +1,5 @@
 
-PEAR channel *information* aggregator
+# PEAR channel *information* aggregator
 
 This DOES NOT AGGREGATE PACKGES! It only aggregates information about packages.
 
@@ -14,7 +14,7 @@ There's no admin interface, only CLI scripts to add channels and update channels
 
 I just used what I knew... so it's a mysql db using the mysqi ext and a stupid active record implementation.
 
-=== Setup! ===
+## Setup!
 
 Clone the repo!
 
@@ -27,33 +27,37 @@ Create a DB that can be connected using `mysqli://pearhunt:pearhunt@localhost/pe
 
 If you want to use your own mysql credentials, copy `etc/config.sample.php` to `config.inc.php` and add the following:
 
-Config:setDbSettings(array(
-    'host'     => 'example.org',
-    'username' => 'mysql user',
-    'password' => 'super secret password'
-    'dbname'   => 'my_database',
-));
+    Config:setDbSettings(array(
+        'host'     => 'example.org',
+        'username' => 'mysql user',
+        'password' => 'super secret password'
+        'dbname'   => 'my_database',
+    ));
 
 Finally:
 
-run `./scripts/upgrade.php` from cli to create and setup the DB
-run `./scripts/addChannel.php pear.php.net` to add a channel to the db.
+ * run `./scripts/upgrade.php` from cli to create and setup the DB
+ * run `./scripts/addChannel.php pear.php.net` to add a channel to the db.
 
-=== Indexing PEAR channels ===
+## Indexing PEAR channels
 
 Add a channel and discover all packages:
-`./scripts/addChannel.php pear.example.com`
+
+ * `./scripts/addChannel.php pear.example.com`
 
 Update a channel:
-`./scripts/updateChannel.php pear.example.com`
 
-=== Searching! ===
+ * `./scripts/updateChannel.php pear.example.com`
 
-Right now there's only a json output:
-http://ucommbieber.unl.edu/workspace/pearhunt/www/?q=load
+## Searching!
 
+ * Search using the form which comes up from `www/index.php`
+ * It'll issue an ajax request to `www/index?q=foo`
 
-=== TODO ===
+Content type is determined by the client's `Accept` header.
+
+## TODO
+
 When scanning the channels, also scan the packages and index all the classes each package provides...
 this would allow us to build a really dangerous autoloader that would install vendor dependencies 
 automatically   B-)
