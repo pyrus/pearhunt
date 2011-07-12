@@ -7,11 +7,27 @@ class PackageSearch extends Packages
     function __construct($options)
     {
         $this->options = $options + $this->options;
+        $records       = array();
+        $mysqli        = Record::getDB();
+
+        $sql  = 'SELECT packages.* FROM packages';
+
+        if (isset($options['q']) && !empty($options['q'])) {
+            $sql .= ' WHERE name LIKE "%';
+            $sql .= $mysqli->escape_string($options['q']);
+            $sql .= '%" OR description LIKE "%';
+            $sql .= $mysqli->escape_string($options['q']);
+            $sql .= '%"';
+        }
+
         $records = array();
-        $mysqli = Record::getDB();
-        $sql = 'SELECT packages.* FROM packages WHERE name LIKE "%'.$mysqli->escape_string($options['q']).'%" OR description LIKE "%'.$mysqli->escape_string($options['q']).'%"';
         if ($result = $mysqli->query($sql)) {
-            $records = $result->fetch_all(MYSQL_ASSOC);
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    $records[] = $row;
+                }
+                $result->free();
+            }
         }
         parent::__construct(new ArrayIterator($records), $this->options['offset'], $this->options['limit']);
     }
