@@ -52,7 +52,7 @@ echo PHP_EOL;
                                 return;
                             }
                         }
-                        $('#result').append('<li><span class="package">' + key + '</span>: <span class="code">pear install ' + channels[info.channel_id] + '/key</span></li>');
+                        $('#result').append('<li><span class="package">' + key + '</span>: <span class="code">pyrus install ' + channels[info.channel_id] + '/' + key + '</span></li>');
                     });
                 });
             });
