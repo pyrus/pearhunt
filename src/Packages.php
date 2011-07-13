@@ -1,5 +1,5 @@
 <?php
-class Packages extends LimitIterator
+abstract class Packages extends DBResultIterator
 {
 	function current()
 	{
