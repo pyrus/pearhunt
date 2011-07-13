@@ -2,10 +2,10 @@
 
 class Channel extends Record
 {
-	public $id;
-	public $name;
-	public $alias;
-	public $description;
+    public $id;
+    public $name;
+    public $alias;
+    public $description;
 
     public function getTable()
     {
@@ -14,7 +14,7 @@ class Channel extends Record
 
     public function getPackages($options = array())
     {
-    	return new Channel_Packages($this, $options);
+        return new Channel_Packages($this, $options);
     }
 
 }

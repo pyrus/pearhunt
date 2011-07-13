@@ -1,7 +1,7 @@
 <?php
 class Config
 {
-	protected static $db_settings = array(
+    protected static $db_settings = array(
         'host'     => 'localhost',
         'user'     => 'pearhunt',
         'password' => 'pearhunt',

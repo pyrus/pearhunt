@@ -1,11 +1,11 @@
 <?php
 class Channel_Packages extends Packages
 {
-	public $options = array('offset' => 0,
+    public $options = array('offset' => 0,
                             'limit'  => -1);
 
-	function __construct(Channel $channel, $options)
-	{
+    function __construct(Channel $channel, $options)
+    {
         $this->options = $options + $this->options;
         $records = array();
         $mysqli = Record::getDB();

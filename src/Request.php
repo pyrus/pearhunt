@@ -26,9 +26,9 @@
  */
 class Request
 {
-	protected $get    = array('format'=>'json');
-	protected $post   = array();
-	protected $files  = array();
+    protected $get    = array('format'=>'json');
+    protected $post   = array();
+    protected $files  = array();
     protected $server = array();
 
 
@@ -44,26 +44,26 @@ class Request
      *
      * @return $this;
      */
-	public function __construct($get = array(), $post = array(), $files = array(), $server = array())
-	{
+    public function __construct($get = array(), $post = array(), $files = array(), $server = array())
+    {
         $this->get    = $get + $this->get;
         $this->post   = $post + $this->post;
         $this->files  = $files + $this->files;
         $this->server = $server + $this->server;
-	}
+    }
 
-	public function getRequestedModel()
-	{
-		return $this->model;
-	}
+    public function getRequestedModel()
+    {
+        return $this->model;
+    }
 
-	public function getRequestedModelId()
-	{
-		if (isset($this->id)) {
-			return $this->id;
-		}
-		return false;
-	}
+    public function getRequestedModelId()
+    {
+        if (isset($this->id)) {
+            return $this->id;
+        }
+        return false;
+    }
 
     public function setRequestedModel($model)
     {
@@ -71,34 +71,34 @@ class Request
         return $this;
     }
 
-	public function __isset($var)
-	{
+    public function __isset($var)
+    {
         if (isset($this->get[$var])
             || isset($this->post[$var])) {
             return true;
         }
 
         return false;
-	}
+    }
 
-	public function __get($var)
-	{
+    public function __get($var)
+    {
         if ($var == 'format') {
             $this->determineFormat();
         }
-		if (isset($this->get[$var])) {
-			return $this->get[$var];
-		}
-		if (isset($this->post[$var])) {
-			return $var;
-		}
-		throw new Exception('Unknown request option');
-	}
+        if (isset($this->get[$var])) {
+            return $this->get[$var];
+        }
+        if (isset($this->post[$var])) {
+            return $var;
+        }
+        throw new Exception('Unknown request option');
+    }
 
-	public function getOptions()
-	{
-		return $this->get;
-	}
+    public function getOptions()
+    {
+        return $this->get;
+    }
 
     /**
      * Uses the ACCEPT header to fix up the response.

@@ -26,20 +26,20 @@
  */
 class Package extends Record
 {
-	public $id;
-	public $channel_id;
-	public $name;
-	public $description;
+    public $id;
+    public $channel_id;
+    public $name;
+    public $description;
 
     /**
      * The table where packages are 'hosted'
      *
      * @return string
      */
-	public function getTable()
-	{
-		return 'packages';
-	}
+    public function getTable()
+    {
+        return 'packages';
+    }
 
     /**
      * @param Channel
