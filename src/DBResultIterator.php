@@ -1,5 +1,5 @@
 <?php
-abstract class DBResultList extends LimitIterator implements Countable
+abstract class DBResultIterator extends LimitIterator implements Countable
 {
     public $options = array('offset' => 0,
                             'limit'  => -1);
