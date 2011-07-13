@@ -16,7 +16,11 @@ abstract class DBResultIterator extends LimitIterator implements Countable
     {
         $this->options = $options + $this->options;
 
-        parent::__construct($this->getIterator(), $this->options['offset'], $this->options['limit']);
+        parent::__construct(
+            $this->getIterator(),
+            $this->options['offset'],
+            $this->options['limit']
+        );
     }
 
     /**
