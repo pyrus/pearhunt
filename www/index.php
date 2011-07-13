@@ -7,10 +7,10 @@ $savvy = new PEAR2\Templates\Savant\Main();
 $savvy->addTemplatePath(__DIR__ . '/templates/html');
 
 switch ($request->format) {
-	case 'json':
-		header('Content-type:application/json');
+    case 'json':
+        header('Content-type:application/json');
         $savvy->addTemplatePath(__DIR__ . '/templates/' . $request->format);
-	    break;
+        break;
     default:
         header('Content-type:text/html;charset=UTF-8');
         $request->setRequestedModel('Channels');

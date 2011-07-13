@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-    	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
         <title>Package Search</title>
         <style type="text/css">
@@ -57,7 +57,7 @@ echo PHP_EOL;
                         $('#result').append('<li><span class="package">' + key + '</span>: <span class="code">pyrus install ' + channels[info.channel_id] + '/' + key + '</span></li>');
                     });
                     if (0 == $('#result').children().length) {
-                    	$('#result').append('<li>No results found</li>');
+                        $('#result').append('<li>No results found</li>');
                     }
                 });
             });

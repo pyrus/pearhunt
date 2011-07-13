@@ -28,7 +28,7 @@ $pyrus_channel = new \PEAR2\Pyrus\Channel($channel_file);
 // Ensure the channel currently exists in the registry
 $config = \PEAR2\Pyrus\Config::current();
 if (!$config->channelregistry->exists($pyrus_channel->name)) {
-	// Add it
+    // Add it
     $config->channelregistry->add($pyrus_channel);
 }
 
@@ -37,7 +37,7 @@ $packages = new \PEAR2\Pyrus\Channel\RemotePackages($config->channelregistry[$py
 
 
 foreach ($packages as $remote_package) {
-	// Check if we know about this package already
+    // Check if we know about this package already
     if (false === $package = Package::getByChannelAndName($channel, (string)$remote_package->name)) {
         $package = new Package();
     }
@@ -47,7 +47,7 @@ foreach ($packages as $remote_package) {
     $package->name        = $remote_package->name;
     $package->description = $remote_package->description;
     if ($package->save()) {
-    	echo ' -'.$channel->name.'/'.$remote_package->name.PHP_EOL;
+        echo ' -'.$channel->name.'/'.$remote_package->name.PHP_EOL;
     }
 }
 
