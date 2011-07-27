@@ -10,6 +10,9 @@ abstract class Packages extends DBResultIterator
 
         $package = new Package();
         $package->synchronizeWithArray($data);
+        if (isset($data['channel'])) {
+            $package->channel = $data['channel'];
+        }
         return $package;
     }
 }

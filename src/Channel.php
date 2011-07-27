@@ -17,4 +17,9 @@ class Channel extends Record
         return new Channel_Packages($this, $options);
     }
 
+    function __toString()
+    {
+        return $this->name;
+    }
+
 }

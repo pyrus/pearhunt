@@ -58,10 +58,23 @@ class Package extends Record
 
         if (($result = $mysqli->query($sql))
             && $result->num_rows > 0) {
+            $data = $result->fetch_assoc();
             $object = new self();
-            $object->synchronizeWithArray($result->fetch_assoc());
+            $object->synchronizeWithArray($data);
+            if (isset($data['channel'])) {
+                $object->channel = $data['channel'];
+            }
             return $object;
         }
         return false;
+    }
+
+    function __get($var)
+    {
+        if ($var == 'channel') {
+            $channel = Channel::getById($this->channel_id);
+            $this->channel = $channel->name;
+            return $this->channel;
+        }
     }
 }
