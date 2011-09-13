@@ -31,4 +31,16 @@ class Channels extends DBResultIterator
         $sql = 'SELECT * FROM channels';
         return $sql;
     }
+
+    function current()
+    {
+        $data = parent::current();
+        if ($data === null) {
+            return null;
+        }
+    
+        $obj = new Channel();
+        $obj->synchronizeWithArray($data);
+        return $obj;
+    }
 }

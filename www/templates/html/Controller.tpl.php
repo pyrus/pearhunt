@@ -20,8 +20,8 @@
 <?php
 $channels = $context->getModel();
 foreach ($channels as $channel) {
-    echo "\t\t" . '<option value="' . $channel['id'] . '">';
-    echo $channel['name'];
+    echo "\t\t" . '<option value="' . $channel->id . '">';
+    echo $channel->name;
     echo '</option>' . PHP_EOL;
 }
 ?>
@@ -36,7 +36,7 @@ foreach ($channels as $channel) {
         var channels = [];
 <?php
 foreach ($channels as $channel) {
-    echo "\tchannels[{$channel['id']}] = '{$channel['name']}';" . PHP_EOL;
+    echo "\tchannels[{$channel->id}] = '{$channel->name}';" . PHP_EOL;
 }
 echo PHP_EOL;
 ?>
