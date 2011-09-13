@@ -12,7 +12,7 @@ abstract class DBResultIterator extends LimitIterator implements Countable
      * @return $this
      * @uses   Record::getDB()
      */
-    public function __construct($options)
+    public function __construct($options = array())
     {
         $this->options = $options + $this->options;
 
