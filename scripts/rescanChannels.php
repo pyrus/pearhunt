@@ -6,8 +6,9 @@ $channels = new Channels();
 
 foreach ($channels as $channel) {
     try {
+        $channel_file = null;
         include 'updateChannel.php';
     } catch(Exception $e) {
-        echo 'Error updating '.$channel->name.PHP_EOL;
+        echo 'Error updating '.$channel->name.' '.$e.PHP_EOL;
     }
 }
